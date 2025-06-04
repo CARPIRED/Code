@@ -17,6 +17,7 @@ The aim of this project is to experiment with GitHub Copilot Codex to build a me
 - Answer medical questions with concise and accurate information.
 - Automate common tasks in medical data management.
 - Provide educational explanations about medical topics.
+- Allow the agent to ingest PDF files for additional reference material.
 
 ## Example Interaction
 
@@ -24,4 +25,9 @@ The aim of this project is to experiment with GitHub Copilot Codex to build a me
 User: What is the dosage of medication X for adults?
 GPT: Provide the standard recommended dosage along with any warnings.
 ```
+
+## PDF Bibliography
+
+The agent can optionally read PDF documents using the `add_pdf_bibliography` method.
+This text can then be used when formulating answers or providing references.
 

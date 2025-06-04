@@ -5,13 +5,16 @@ class MedicalAgent:
         self.api_key = api_key
         self.model = model
         self.openai = None
+        self.documents: list[str] = []
         if api_key:
             try:
                 import openai  # type: ignore
                 openai.api_key = api_key
                 self.openai = openai
             except ImportError:
-                raise ImportError("openai package not installed. Install openai to use API features.")
+                raise ImportError(
+                    "openai package not installed. Install openai to use API features."
+                )
 
     def _chat(self, prompt: str) -> str:
         """Internal helper for optional OpenAI interaction."""
@@ -45,3 +48,25 @@ class MedicalAgent:
             "Advise on immediate steps for triage."
         )
         return self._chat(prompt)
+
+    def extract_pdf_text(self, pdf_path: str) -> str:
+        """Extract text from a PDF file."""
+        try:
+            from PyPDF2 import PdfReader  # type: ignore
+        except ImportError as exc:
+            raise ImportError(
+                "PyPDF2 package not installed. Install PyPDF2 to enable PDF features."
+            ) from exc
+
+        reader = PdfReader(pdf_path)
+        text_parts = []
+        for page in reader.pages:
+            page_text = page.extract_text()
+            if page_text:
+                text_parts.append(page_text)
+        return "\n".join(text_parts)
+
+    def add_pdf_bibliography(self, pdf_path: str) -> None:
+        """Read a PDF and store its text for future reference."""
+        text = self.extract_pdf_text(pdf_path)
+        self.documents.append(text)
