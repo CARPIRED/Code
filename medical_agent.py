@@ -10,18 +10,24 @@ class MedicalAgent:
                 import openai  # type: ignore
                 openai.api_key = api_key
                 self.openai = openai
-            except ImportError:
-                raise ImportError("openai package not installed. Install openai to use API features.")
+            except ImportError as exc:
+                raise ImportError(
+                    "openai package not installed. Install openai to use API features."
+                ) from exc
 
     def _chat(self, prompt: str) -> str:
         """Internal helper for optional OpenAI interaction."""
-        if self.openai:
+        if not self.openai:
+            return "Model not configured."
+
+        try:
             response = self.openai.ChatCompletion.create(
                 model=self.model,
                 messages=[{"role": "user", "content": prompt}],
             )
-            return response.choices[0].message["content"].strip()
-        return "Model not configured."
+            return response["choices"][0]["message"]["content"].strip()
+        except Exception as exc:
+            return f"Error communicating with the model: {exc}"
 
     def get_differential_diagnosis(self, symptoms: str) -> str:
         """Return a differential diagnosis given a set of symptoms."""
@@ -34,7 +40,7 @@ class MedicalAgent:
     def suggest_treatment(self, diagnosis: str) -> str:
         """Suggest a treatment plan for the provided diagnosis."""
         prompt = (
-            f"Based on the diagnosis '{diagnosis}', suggest an appropriate treatment plan.""
+            f"Based on the diagnosis '{diagnosis}', suggest an appropriate treatment plan."
         )
         return self._chat(prompt)
 
