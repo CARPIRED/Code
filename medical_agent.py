@@ -34,7 +34,7 @@ class MedicalAgent:
     def suggest_treatment(self, diagnosis: str) -> str:
         """Suggest a treatment plan for the provided diagnosis."""
         prompt = (
-            f"Based on the diagnosis '{diagnosis}', suggest an appropriate treatment plan.""
+            f"Based on the diagnosis '{diagnosis}', suggest an appropriate treatment plan."
         )
         return self._chat(prompt)
 
