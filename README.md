@@ -5,6 +5,19 @@ Laboratorio experimental para explorar el desarrollo de un GPT especializado en 
 Para más detalles consulte el documento [docs/medical-imaging-gpt-spec.md](docs/medical-imaging-gpt-spec.md).
 El codigo incluye la clase `MedicalImagingAgent` (ver `imaging_agent.py`), que permite generar informes radiologicos a partir de hallazgos y metadatos.
 
+## Preprocesamiento de imágenes
+
+Para preparar un estudio antes del análisis se puede utilizar el módulo
+`preprocessing.py`, que sigue la secuencia indicada en la especificación.
+
+```python
+from preprocessing import load_image, normalize, crop_foreground
+
+data = load_image("imagen.png")
+data = normalize(data)
+data = crop_foreground(data)
+```
+
 ## Web Demo
 
 Se incluye una aplicación Flask sencilla para probar el agente desde un navegador.
