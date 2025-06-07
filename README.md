@@ -8,6 +8,8 @@ El codigo incluye la clase `MedicalImagingAgent` (ver `imaging_agent.py`), que p
 ## Web Demo
 
 Se incluye una aplicación Flask sencilla para probar el agente desde un navegador.
+La interfaz permite ingresar los hallazgos radiológicos y los datos básicos del paciente
+para generar un informe estructurado utilizando `MedicalImagingAgent`.
 
 ### Requisitos
 - Python 3.10+
@@ -19,4 +21,5 @@ Se incluye una aplicación Flask sencilla para probar el agente desde un navegad
 pip install flask openai
 python web/app.py
 ```
-Luego visite `http://localhost:5000` y envíe los síntomas para obtener una respuesta.
+Luego visite `http://localhost:5000` e introduzca los datos solicitados para obtener
+un informe radiológico de ejemplo.
