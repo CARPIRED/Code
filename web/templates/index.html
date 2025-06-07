@@ -28,6 +28,9 @@
     {% if response %}
     <h2>Response:</h2>
     <p>{{ response }}</p>
+    {% if pdf_available %}
+    <p><a href="{{ url_for('download_pdf') }}">Download PDF</a></p>
+    {% endif %}
     {% endif %}
   </body>
 </html>
