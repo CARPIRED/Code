@@ -27,12 +27,12 @@ proporcionar datos básicos del paciente.
 
 ### Requisitos
 - Python 3.10+
-- `flask`
-- `openai` (opcional, para usar la API)
+- Dependencias listadas en `requirements.txt`.
+- `openai` es opcional y solo se necesita para usar la API.
 
 ### Ejecución
 ```bash
-pip install flask openai
+pip install -r requirements.txt
 python web/app.py
 ```
 Luego visite `http://localhost:5000` e introduzca los datos solicitados para obtener
