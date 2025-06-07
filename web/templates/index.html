@@ -8,12 +8,22 @@
     <h1>Medical Imaging Agent</h1>
     <form method="post">
       <label for="findings">Radiology Findings:</label><br>
-      <textarea id="findings" name="findings" rows="4" cols="50" required></textarea><br>
+      <textarea id="findings" name="findings" rows="4" cols="50"></textarea><br>
+      <label for="image_path">Image Path:</label>
+      <input type="text" id="image_path" name="image_path"><br>
       <label for="age">Age:</label>
       <input type="text" id="age" name="age" required><br>
       <label for="sex">Sex:</label>
       <input type="text" id="sex" name="sex" required><br>
-      <button type="submit">Generate Report</button>
+      <label for="task">Task:</label>
+      <select id="task" name="task">
+        <option value="report">Generate Report</option>
+        <option value="classification">Classification</option>
+        <option value="segmentation">Segmentation</option>
+        <option value="detection">Detection</option>
+        <option value="multi">Multi-Task</option>
+      </select><br>
+      <button type="submit">Run</button>
     </form>
     {% if response %}
     <h2>Response:</h2>
