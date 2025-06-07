@@ -15,5 +15,5 @@ jobs:
           python -m pip install --upgrade pip || true
           pip install flask || true
       - name: Run tests
-        run: python -m unittest discover -v
+        run: pytest -q
 
