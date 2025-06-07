@@ -6,11 +6,11 @@
   </head>
   <body>
     <h1>Medical Imaging Agent</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       <label for="findings">Radiology Findings:</label><br>
       <textarea id="findings" name="findings" rows="4" cols="50"></textarea><br>
-      <label for="image_path">Image Path:</label>
-      <input type="text" id="image_path" name="image_path"><br>
+      <label for="image_file">Upload Image:</label>
+      <input type="file" id="image_file" name="image_file"><br>
       <label for="age">Age:</label>
       <input type="text" id="age" name="age" required><br>
       <label for="sex">Sex:</label>
@@ -25,9 +25,13 @@
       </select><br>
       <button type="submit">Run</button>
     </form>
-    {% if response %}
-    <h2>Response:</h2>
-    <p>{{ response }}</p>
-    {% endif %}
-  </body>
-</html>
+      {% if image_url %}
+      <h2>Uploaded Image:</h2>
+      <img src="{{ image_url }}" alt="uploaded image" style="max-width:500px;"><br>
+      {% endif %}
+      {% if response %}
+      <h2>Response:</h2>
+      <pre>{{ response }}</pre>
+      {% endif %}
+    </body>
+  </html>
