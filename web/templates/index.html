@@ -6,13 +6,15 @@
   </head>
   <body>
     <h1>Medical Imaging Agent</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       <label for="findings">Radiology Findings:</label><br>
       <textarea id="findings" name="findings" rows="4" cols="50" required></textarea><br>
       <label for="age">Age:</label>
       <input type="text" id="age" name="age" required><br>
       <label for="sex">Sex:</label>
       <input type="text" id="sex" name="sex" required><br>
+      <label for="image">Imaging File:</label>
+      <input type="file" id="image" name="image"><br>
       <button type="submit">Generate Report</button>
     </form>
     {% if response %}

@@ -20,3 +20,27 @@ class MedicalImagingAgent(MedicalAgent):
         details = ", ".join(f"{k}: {v}" for k, v in patient_data.items())
         prompt = f"{self.REPORT_PROMPT}\n\nHallazgos: {findings}. Datos del paciente: {details}."
         return self._chat(prompt)
+
+    # ------------------------------------------------------------------
+    # Placeholder implementations for core imaging tasks
+    # ------------------------------------------------------------------
+
+    def classify_image(self, image_path: str) -> str:
+        """Mock classification task."""
+        return f"Classified image {image_path}. (stub)"
+
+    def segment_image(self, image_path: str) -> str:
+        """Mock segmentation task."""
+        return f"Segmented structures in {image_path}. (stub)"
+
+    def detect_anomalies(self, image_path: str) -> str:
+        """Mock detection task."""
+        return f"Detected anomalies in {image_path}. (stub)"
+
+    def multi_task_workflow(self, image_path: str) -> Dict[str, str]:
+        """Run a mock multi‑task pipeline."""
+        return {
+            "classification": self.classify_image(image_path),
+            "segmentation": self.segment_image(image_path),
+            "detection": self.detect_anomalies(image_path),
+        }

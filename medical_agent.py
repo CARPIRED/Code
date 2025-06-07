@@ -2,6 +2,10 @@ class MedicalAgent:
     """Simple medical agent implementing basic helper methods."""
 
     def __init__(self, api_key: str | None = None, model: str = "gpt-3.5-turbo"):
+        """Initialize the agent and optionally configure the OpenAI client."""
+        if api_key is None:
+            import os
+            api_key = os.getenv("OPENAI_API_KEY")
         self.api_key = api_key
         self.model = model
         self.openai = None
