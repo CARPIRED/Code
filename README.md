@@ -1,8 +1,9 @@
 # Code
 
-Laboratorio experimental para probar funciones de GitHub Copilot Codex con proyectos de automatización médica y educativa. Este repositorio explora la creación de un GPT especializado en tareas médicas.
+Laboratorio experimental para explorar el desarrollo de un GPT especializado en imagenología médica avanzada. El objetivo es implementar un asistente capaz de procesar estudios radiológicos, integrar metadatos clínicos y generar reportes estructurados.
 
-Para más detalles consulte el documento [docs/medical-gpt-spec.md](docs/medical-gpt-spec.md).
+Para más detalles consulte el documento [docs/medical-imaging-gpt-spec.md](docs/medical-imaging-gpt-spec.md).
+El codigo incluye la clase `MedicalImagingAgent` (ver `imaging_agent.py`), que permite generar informes radiologicos a partir de hallazgos y metadatos.
 
 ## Web Demo
 
