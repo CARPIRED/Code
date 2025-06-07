@@ -2,9 +2,22 @@ class MedicalAgent:
     """Simple medical agent implementing basic helper methods."""
 
     def __init__(self, api_key: str | None = None, model: str = "gpt-3.5-turbo"):
+        """Initialize the agent and configure optional OpenAI access.
+
+        The method checks the ``MEDICAL_AGENT_API_KEY`` or ``OPENAI_API_KEY``
+        environment variables when ``api_key`` is not explicitly provided. This
+        allows configuring the key without hardcoding it in the application.
+        """
+
+        import os
+
+        if api_key is None:
+            api_key = os.getenv("MEDICAL_AGENT_API_KEY") or os.getenv("OPENAI_API_KEY")
+
         self.api_key = api_key
         self.model = model
         self.openai = None
+
         if api_key:
             try:
                 import openai  # type: ignore
